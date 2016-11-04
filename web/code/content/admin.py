@@ -11,7 +11,10 @@ class WorkItemAdmin(admin.ModelAdmin):
     inlines = [
         WorkImageInline,
     ]
-    list_display = ('id', 'title', 'prise', 'sort_index')
+    list_display = ('sort_index', 'category', 'title', 'prise')
+    def get_queryset(self, request):
+        qs = super(WorkItemAdmin, self).get_queryset(request)
+        return qs.order_by('sort_index')
 
 class WorkImageAdmin(admin.ModelAdmin):
     readonly_fields = ('image_tag',)
@@ -30,5 +33,6 @@ admin.site.register(models.WorkItem, WorkItemAdmin)
 admin.site.register(models.SliderImage, SliderImageAdmin)
 admin.site.register(models.ContactInformation, ContactInformationAdmin)
 admin.site.register(models.ServiceItem, ServiceItemAdmin)
+admin.site.register(models.WorkItemCategory)
 
 admin.site.unregister(Group)

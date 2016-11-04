@@ -14,6 +14,8 @@ def get_state(request):
     workItems = models.WorkItem.objects.all().order_by('sort_index')
     workItemSerializer = serializers.WorkItemSerializer(workItems, many=True)
 
+    categories = [c.name for c in models.WorkItemCategory.objects.all()]
+
     contactInfoList = models.ContactInformation.objects.all()
     if len(contactInfoList) > 0:
         contactInfo = contactInfoList[0]
@@ -36,7 +38,8 @@ def get_state(request):
 
     return ApiResponse({
         'workItems': workItemSerializer.data,
+        'categories': categories,
         'contactInfo': contactInfoSerializer.data,
         'sliderItems': sliderItemsSerializer.data,
-        'serviceItems': serviceItemsData
+        'serviceItems': serviceItemsData,
     })

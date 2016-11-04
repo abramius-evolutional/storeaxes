@@ -2,12 +2,20 @@
 import uuid
 from django.db import models
 
+class WorkItemCategory(models.Model):
+    name = models.CharField(max_length=60, verbose_name='Категория')
+    def __unicode__(self):
+        return self.name
+    class Meta:
+        verbose_name = 'Категория продуктов'
+        verbose_name_plural = 'Категории продуктов'
 
 class WorkItem(models.Model):
     title = models.CharField(max_length=200, verbose_name='Название')
     description = models.TextField(default='', blank=True, verbose_name='Описание')
     prise = models.IntegerField(verbose_name='Цена')
     sort_index = models.IntegerField(verbose_name='Сортировочный индекс', default=0)
+    category = models.ForeignKey(WorkItemCategory, blank=True, null=True)
     def __unicode__(self):
         return self.title
     class Meta:
@@ -51,6 +59,8 @@ class ContactInformation(models.Model):
     phone = models.CharField(max_length=200, blank=True, default='', verbose_name='Телефон')
     address = models.TextField(blank=True, default='', verbose_name='Адрес')
     about = models.TextField(blank=True, default='', verbose_name='О компании')
+    delivery = models.TextField(blank=True, default='', verbose_name='Доставка')
+    payment = models.TextField(blank=True, default='', verbose_name='Оплата')
     class Meta:
         verbose_name = 'Контактная информация'
         verbose_name_plural = 'Контактная информация'

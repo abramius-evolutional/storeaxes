@@ -5,6 +5,7 @@ import json
 
 class WorkItemSerializer(serializers.ModelSerializer):
     url = serializers.SerializerMethodField('get_urls')
+    category = serializers.SerializerMethodField('get_category')
     class Meta:
         model = models.WorkItem
         fields = (
@@ -12,10 +13,13 @@ class WorkItemSerializer(serializers.ModelSerializer):
             'url',
             'title',
             'description',
+            'category',
             'prise',
         )
     def get_urls(self, obj):
         return map(lambda im: im.image.url, obj.images.all())
+    def get_category(self, obj):
+        return obj.category.name if obj.category else ''
 
 class ContactInfoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,6 +28,8 @@ class ContactInfoSerializer(serializers.ModelSerializer):
             'phone',
             'address',
             'about',
+            'delivery',
+            'payment',
         )
 
 class SliderItemSerializer(serializers.ModelSerializer):
