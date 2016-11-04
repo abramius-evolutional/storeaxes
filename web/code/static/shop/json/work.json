@@ -1,0 +1,114 @@
+{
+	"contactInfo": {
+		"text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper nisl ut aliquip ex ea commodo consequat",
+		"title": "We Are Here",
+		"address": "Via Principe Amedeo 9 10100, Torino, TO, Italy",
+		"phone": "+79505050505"
+	},
+	"sliderItems": [
+		{
+		"url": "/static/shop/dist/css/img/slider/1.jpg",
+	 	"name": 0,
+	 	"title": "Топор",
+	 	"description": "Топор такой то закалки такого то вида",
+	 	"id": 1 
+	},
+	{
+		"url": "/static/shop/dist/css/img/slider/2.jpg",
+	 	"name": 0,
+	 	"title": "Топор",
+	 	"description": "Топор такой то закалки такого то вида",
+	 	"id": 2 
+	},
+	{
+		"url": "/static/shop/dist/css/img/slider/5.jpg",
+	 	"name": 0,
+	 	"title": "Топор",
+	 	"description": "Топор такой то закалки такого то вида",
+	 	"id": 3
+	},
+	{
+		"url": "/static/shop/dist/css/img/slider/6.jpg",
+	 	"name": 0,
+	 	"title": "Топор",
+	 	"description": "Топор такой то закалки такого то вида",
+	 	"id": 4
+	}
+	],
+	"workItems": [
+		{
+		"url": [
+			"/static/shop/dist/css/img/portfolio/work1.jpg",
+			"/static/shop/dist/css/img/portfolio/work2.jpg",
+			"/static/shop/dist/css/img/portfolio/work3.jpg"
+		],
+	 	"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.",
+	 	"title": "Lorem Website",
+	 	"id": 1,
+	 	"prise": 1234 
+	},
+	{
+		"url": [
+			"/static/shop/dist/css/img/portfolio/work1.jpg",
+			"/static/shop/dist/css/img/portfolio/work2.jpg",
+			"/static/shop/dist/css/img/portfolio/work3.jpg"
+		],
+	 	"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.",
+	 	"title": "Lorem Website",
+	 	"id": 2,
+	 	"prise": 1234 
+	},
+	{
+		"url": [
+			"/static/shop/dist/css/img/portfolio/work1.jpg",
+			"/static/shop/dist/css/img/portfolio/work2.jpg",
+			"/static/shop/dist/css/img/portfolio/work3.jpg"
+		],
+	 	"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.",
+	 	"title": "Lorem Website",
+	 	"id": 3,
+	 	"prise": 1234 
+	},
+	{
+		"url": [
+			"/static/shop/dist/css/img/portfolio/work1.jpg",
+			"/static/shop/dist/css/img/portfolio/work2.jpg",
+			"/static/shop/dist/css/img/portfolio/work3.jpg"
+		],
+	 	"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.",
+	 	"title": "Lorem Website",
+	 	"id": 4,
+	 	"prise": 1234 
+	}
+	],
+	"serviceItems": [
+		{
+			"title": "Beautiful Websites",
+			"p": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et...",
+			"link": "services.html",
+			"iconClassName": "icon-eye-open",
+			"id":"1"
+		},
+		{
+			"title": "Beautiful Websites",
+			"p": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et...",
+			"link": "services.html",
+			"iconClassName": "icon-table",
+			"id":"2"
+		},
+		{
+			"title": "Beautiful Websites",
+			"p": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et...",
+			"link": "services.html",
+			"iconClassName": "icon-magic",
+			"id":"3"
+		},
+		{
+			"title": "Beautiful Websites",
+			"p": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et...",
+			"link": "services.html",
+			"iconClassName": "icon-print",
+			"id":"4"
+		}
+	]
+}
