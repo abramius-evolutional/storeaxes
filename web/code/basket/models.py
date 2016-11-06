@@ -40,7 +40,7 @@ class Order(models.Model):
             result += 'Название: %s\n' % item_group['item']['title']
             result += 'Цена: %s\n' % item_group['item']['prise']
             result += 'Количество: %s\n\n' % item_group['count']
-            total_price += int(item_group['item']['prise'])
+            total_price += int(item_group['item']['prise']) * int(item_group['count'])
         result += 'Суммарная стоимость: %s' % total_price
         self.pretty_data = result
         self.save()
