@@ -29,9 +29,9 @@ var PortfolioItem = React.createClass({
                     <Link onClick={this.setIdItem} to={`/products/${this.props.prop.id}`} >
                         <img src={this.props.prop.url} alt="" />
                     </Link>
-                    <h4>{this.props.prop.title}</h4>
+                    <span>{this.props.prop.title}</span>
                     <p>{description}</p>
-                    <h4>{this.props.prop.prise} <i className='fa fa-rub' ></i></h4>
+                    <span>{this.props.prop.prise + ' '}<i className='fa fa-rub' ></i></span>
                 </div>
             </li>
 		);

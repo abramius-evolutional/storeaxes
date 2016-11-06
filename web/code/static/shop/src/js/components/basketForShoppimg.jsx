@@ -9,7 +9,8 @@ var BasketForShoppimg = React.createClass({
 		return {
 			basketInfo: AppStore.getState().basketIhfo,
 			statusShowForm: false,
-			basketId: AppStore.getState().basketId
+			basketId: AppStore.getState().basketId,
+			totalPrise: AppStore.getState().totalPrise
 		};
 	},
 	internalState: {
@@ -39,13 +40,14 @@ var BasketForShoppimg = React.createClass({
     	if (this.internalState.isMouned === true) {
     		this.setState({
     			basketInfo: AppStore.getState().basketIhfo,
-    			basketId: AppStore.getState().basketId
+    			basketId: AppStore.getState().basketId,
+                totalPrise: AppStore.getState().totalPrise
     		});
     	}
     },
 	render: function() {
 		var basketItems = null, componentForm = null, basketId = this.state.basketId;
-		// console.log('basketForShoppimg.jsx', this.state.basketId);
+		console.log('basketForShoppimg.jsx', this.state.totalPrise);
 		basketItems = this.state.basketInfo.map(function (prop, id) {
 			// console.log('basketForShoppimg.jsx', itemBasket);
 			return (
@@ -64,6 +66,7 @@ var BasketForShoppimg = React.createClass({
 					</div>
 					{basketItems}
 					<div className='basketFooter'>
+                        <span>{'Итого: ' + this.state.totalPrise + ' рублей'}</span>
 						<button onClick={this.closeBasket}>Закрыть</button>
 						<button onClick={this.openForm}>Оформить</button>
 					</div>

@@ -9,7 +9,8 @@ var HomeHeader = React.createClass({
     getInitialState: function () {
         return {
             address: AppStore.getState().address,
-            basketInfo: AppStore.getState().basketIhfo
+            basketInfo: AppStore.getState().basketIhfo,
+            totalPrise: AppStore.getState().totalPrise
         };
     },
     componentDidMount: function () {
@@ -21,7 +22,8 @@ var HomeHeader = React.createClass({
     _onChange: function () {
         this.setState({
             address: AppStore.getState().address,
-            basketInfo: AppStore.getState().basketIhfo
+            basketInfo: AppStore.getState().basketIhfo,
+            totalPrise: AppStore.getState().totalPrise
         });
     },
     openBasket: function () {
@@ -190,7 +192,9 @@ taygasibru@yandex.ru</h2>
                                 <div className='shoppingPicker'>
                                     <span>{countBasketItems}</span>
                                 </div>
-                                
+                                <div className="prise">
+                                    <span>{this.state.totalPrise + ' '}<i className='fa fa-rub' ></i></span>
+                                </div>
                             </div>
                         </div>
                     </div>

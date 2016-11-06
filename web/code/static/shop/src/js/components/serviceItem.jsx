@@ -12,7 +12,7 @@ var ServiceItem = React.createClass({
                 </div>
                 <h4>{this.props.prop.title}</h4>
                 <p>{this.props.prop.p}</p>
-                <a href={this.props.prop.link} target="_blank">Read more</a>
+                <a href={this.props.prop.link} target="_blank">Перейти...</a>
             </div>
 		);
 	}

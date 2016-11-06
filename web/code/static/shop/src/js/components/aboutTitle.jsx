@@ -10,7 +10,7 @@ var AboutTitle = React.createClass({
 	                <div className="row">
 	                    <div className="span12">
 	                        <i className="icon-user page-title-icon"></i>
-	                        <h2>О нас "Тайга"</h2>
+	                        <h1>О нас "Тайга"</h1>
 	                    </div>
 	                </div>
 	            </div>

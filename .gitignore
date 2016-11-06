@@ -21,3 +21,6 @@ db/data
 
 # Migrations
 migrations
+
+.DS_Store
+.idea/

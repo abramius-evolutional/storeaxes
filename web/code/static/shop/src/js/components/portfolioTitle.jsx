@@ -10,7 +10,7 @@ var Title = React.createClass({
 	                <div className="row">
 	                    <div className="span12">
 	                        <i className="icon-camera page-title-icon"></i>
-	                        <h2>Каталог</h2>
+	                        <h1>Каталог</h1>
 	                    </div>
 	                </div>
 	            </div>

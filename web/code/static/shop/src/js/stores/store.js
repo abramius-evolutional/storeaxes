@@ -19,7 +19,8 @@ var state = {
 	statusShowBasket: false,
 	statusCreateBasket: false,
 	basketId: null,
-	basketIhfo: []
+	basketIhfo: [],
+    totalPrise: 0
 };
 
 function setCookie(name, value, options) {
@@ -181,7 +182,13 @@ function getIdBasket(action) {
 };
 
 function getInfoBasket(action) {
+	// console.log('Store.js', action.data);
 	state.basketIhfo = action.data;
+    state.totalPrise = 0;
+    for (var i = 0; i < action.data.length; i++) {
+        console.log('Store.js', action.data);
+        state.totalPrise = state.totalPrise + action.data[i].item.prise;
+    }
 };
 
 function getCoockie(action) {

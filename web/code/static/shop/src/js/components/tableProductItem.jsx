@@ -19,7 +19,7 @@ var TableProductItem = React.createClass({
 	},
 	render: function() {
 		// document.title = 'tayga';
-		console.log('tableProductItem.jsx', document.title);
+		// console.log('tableProductItem.jsx', document.title);
 		var description;
         if (this.props.prop.description.length > 80) {
             description = this.props.prop.description.substring(0, 80) + '...';

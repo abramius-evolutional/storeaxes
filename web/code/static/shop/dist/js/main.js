@@ -32228,7 +32228,8 @@ var BasketForShoppimg = React.createClass({displayName: "BasketForShoppimg",
 		return {
 			basketInfo: AppStore.getState().basketIhfo,
 			statusShowForm: false,
-			basketId: AppStore.getState().basketId
+			basketId: AppStore.getState().basketId,
+			totalPrise: AppStore.getState().totalPrise
 		};
 	},
 	internalState: {
@@ -32258,13 +32259,14 @@ var BasketForShoppimg = React.createClass({displayName: "BasketForShoppimg",
     	if (this.internalState.isMouned === true) {
     		this.setState({
     			basketInfo: AppStore.getState().basketIhfo,
-    			basketId: AppStore.getState().basketId
+    			basketId: AppStore.getState().basketId,
+                totalPrise: AppStore.getState().totalPrise
     		});
     	}
     },
 	render: function() {
 		var basketItems = null, componentForm = null, basketId = this.state.basketId;
-		// console.log('basketForShoppimg.jsx', this.state.basketId);
+		console.log('basketForShoppimg.jsx', this.state.totalPrise);
 		basketItems = this.state.basketInfo.map(function (prop, id) {
 			// console.log('basketForShoppimg.jsx', itemBasket);
 			return (
@@ -32283,6 +32285,7 @@ var BasketForShoppimg = React.createClass({displayName: "BasketForShoppimg",
 					), 
 					basketItems, 
 					React.createElement("div", {className: "basketFooter"}, 
+                        React.createElement("span", null, 'Итого: ' + this.state.totalPrise + ' рублей'), 
 						React.createElement("button", {onClick: this.closeBasket}, "Закрыть"), 
 						React.createElement("button", {onClick: this.openForm}, "Оформить")
 					)
@@ -32295,6 +32298,7 @@ var BasketForShoppimg = React.createClass({displayName: "BasketForShoppimg",
 });
 
 module.exports = BasketForShoppimg;
+
 
 },{"../action/actions.js":308,"../stores/store.js":340,"./contactForm.jsx":314,"./itemBasket.jsx":319,"react":305}],314:[function(require,module,exports){
 var React = require('react');
@@ -32634,7 +32638,8 @@ var HomeHeader = React.createClass({displayName: "HomeHeader",
     getInitialState: function () {
         return {
             address: AppStore.getState().address,
-            basketInfo: AppStore.getState().basketIhfo
+            basketInfo: AppStore.getState().basketIhfo,
+            totalPrise: AppStore.getState().totalPrise
         };
     },
     componentDidMount: function () {
@@ -32646,7 +32651,8 @@ var HomeHeader = React.createClass({displayName: "HomeHeader",
     _onChange: function () {
         this.setState({
             address: AppStore.getState().address,
-            basketInfo: AppStore.getState().basketIhfo
+            basketInfo: AppStore.getState().basketIhfo,
+            totalPrise: AppStore.getState().totalPrise
         });
     },
     openBasket: function () {
@@ -32814,8 +32820,10 @@ var HomeHeader = React.createClass({displayName: "HomeHeader",
                             React.createElement("div", {onClick: this.openBasket, className: "shoppingBasket", style: {position: 'absolute', top: '131px', right: '10px', position: 'fixed'}}, 
                                 React.createElement("div", {className: "shoppingPicker"}, 
                                     React.createElement("span", null, countBasketItems)
+                                ), 
+                                React.createElement("div", {className: "prise"}, 
+                                    React.createElement("span", null, this.state.totalPrise + ' ', React.createElement("i", {className: "fa fa-rub"}))
                                 )
-                                
                             )
                         )
                     )
@@ -32827,6 +32835,7 @@ var HomeHeader = React.createClass({displayName: "HomeHeader",
 });
 
 module.exports = HomeHeader;
+
 
 },{"../action/actions.js":308,"../stores/store.js":340,"react":305,"react-router":114}],319:[function(require,module,exports){
 var React = require('react');
@@ -32849,7 +32858,7 @@ var ItemBasket = React.createClass({displayName: "ItemBasket",
 				React.createElement("h6", null, this.props.prop.item.title), 
 				React.createElement("input", {type: "number", min: "1", max: "99", name: "points", step: "1", onChange: this.onChangeCount, defaultValue: this.props.prop.count}), 
 				React.createElement("button", {onClick: this.onDelete}, React.createElement("i", {className: "fa fa-times", ariaHidden: "true"})), 
-				React.createElement("span", null, 'цена: ' + this.props.prop.item.prise)
+				React.createElement("span", null, 'цена: ' + (this.props.prop.item.prise))
 			)
 		);
 	}
@@ -32857,6 +32866,7 @@ var ItemBasket = React.createClass({displayName: "ItemBasket",
 });
 
 module.exports = ItemBasket;
+
 
 },{"../action/actions.js":308,"../stores/store.js":340,"react":305}],320:[function(require,module,exports){
 var React = require('react');
@@ -33067,7 +33077,7 @@ var PortfolioItem = React.createClass({displayName: "PortfolioItem",
                     ), 
                     React.createElement("span", null, this.props.prop.title), 
                     React.createElement("p", null, description), 
-                    React.createElement("span", null, this.props.prop.prise + '', React.createElement("i", {className: "fa fa-rub"}))
+                    React.createElement("span", null, this.props.prop.prise + ' ', React.createElement("i", {className: "fa fa-rub"}))
                 )
             )
 		);
@@ -33494,7 +33504,7 @@ var TableProductItem = React.createClass({displayName: "TableProductItem",
 	},
 	render: function() {
 		// document.title = 'tayga';
-		console.log('tableProductItem.jsx', document.title);
+		// console.log('tableProductItem.jsx', document.title);
 		var description;
         if (this.props.prop.description.length > 80) {
             description = this.props.prop.description.substring(0, 80) + '...';
@@ -33523,6 +33533,7 @@ var TableProductItem = React.createClass({displayName: "TableProductItem",
 });
 
 module.exports = TableProductItem;
+
 
 },{"../action/actions.js":308,"../stores/store.js":340,"react":305,"react-router":114}],335:[function(require,module,exports){
 var React = require('react');
@@ -33782,7 +33793,8 @@ var state = {
 	statusShowBasket: false,
 	statusCreateBasket: false,
 	basketId: null,
-	basketIhfo: []
+	basketIhfo: [],
+    totalPrise: 0
 };
 
 function setCookie(name, value, options) {
@@ -33944,7 +33956,13 @@ function getIdBasket(action) {
 };
 
 function getInfoBasket(action) {
+	// console.log('Store.js', action.data);
 	state.basketIhfo = action.data;
+    state.totalPrise = 0;
+    for (var i = 0; i < action.data.length; i++) {
+        console.log('Store.js', action.data);
+        state.totalPrise = state.totalPrise + action.data[i].item.prise;
+    }
 };
 
 function getCoockie(action) {
@@ -34020,5 +34038,6 @@ AppDispatcher.register(function(payload){
 });
 
 module.exports = AppStore;
+
 
 },{"../constants/constants.js":337,"../dispatcher/dispatcher.js":338,"events":2,"object-assign":33}]},{},[339])
