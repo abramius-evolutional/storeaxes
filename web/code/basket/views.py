@@ -120,7 +120,7 @@ def make_order(request):
     item_groups = basket.item_groups.all()
     total_price = 0
     for item_group in item_groups:
-        total_price += int(item_group.item.prise)
+        total_price += int(item_group.item.prise) * item_group.count
 
     serializer = serializers.ItemGroupSerializer(item_groups, many=True)
 
