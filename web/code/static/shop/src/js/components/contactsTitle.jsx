@@ -10,7 +10,7 @@ var contactsTitle = React.createClass({
 	                <div className="row">
 	                    <div className="span12">
 	                        <i className="icon-envelope-alt page-title-icon"></i>
-	                        <h2>Контакты /</h2>
+	                        <h1>Контакты /</h1>
 	                    </div>
 	                </div>
 	            </div>

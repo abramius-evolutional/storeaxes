@@ -10,7 +10,7 @@ var ServiceTitle = React.createClass({
 	                <div className="row">
 	                    <div className="span12">
 	                        <i className="icon-tasks page-title-icon"></i>
-	                        <h2>Оплата и доставка</h2>
+	                        <h1>Оплата и доставка</h1>
 	                    </div>
 	                </div>
 	            </div>
