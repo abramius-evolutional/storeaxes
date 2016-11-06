@@ -14,6 +14,7 @@ class ItemGroup(models.Model):
     item = models.ForeignKey('content.WorkItem', related_name='item_groups')
     count = models.PositiveSmallIntegerField()
     basket = models.ForeignKey('Basket', related_name='item_groups')
+    dt = models.DateTimeField(verbose_name='Дата и время создания', default=datetime.now, editable=False)
     class Meta:
         unique_together = ('item', 'basket')
 

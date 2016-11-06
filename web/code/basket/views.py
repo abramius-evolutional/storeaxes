@@ -16,7 +16,7 @@ def items(request):
     except models.Basket.DoesNotExist:
         return ApiResponse({'status': 'Basket has not been found.'}, 404)
 
-    serializer = serializers.ItemGroupSerializer(basket.item_groups.all(), many=True)
+    serializer = serializers.ItemGroupSerializer(basket.item_groups.all().order_by('dt'), many=True)
 
     return ApiResponse(serializer.data)
 
