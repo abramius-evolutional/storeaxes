@@ -1638,7 +1638,8 @@ ul.portfolio-img li {
     background: none;
 }
 .contentShop {
-    background: url(../css/img/frenchstucco.png) repeat;
+    /*background: url(../css/img/frenchstucco.png) repeat;*/
+    background: #eee;
 }
 .productDiscription {
         width: 90%;
@@ -1696,6 +1697,7 @@ div.documentPasport p {
     background-size: 100px;
     border-radius: 5px;
     cursor: pointer;
+    z-index: 10;
 }
 .shoppingPicker {
         width: 17px;
@@ -1709,7 +1711,7 @@ div.documentPasport p {
         box-shadow: 0px 0px 13px;
          margin-left: 12px;
 }
-.shoppingPicker > span {
+.shoppingPicker > span:nth-child(1) {
         height: 13px;
     width: 17px;
     display: inline-block;
@@ -1720,6 +1722,17 @@ div.documentPasport p {
     left: 0px;
     font-size: 11px;
     font-weight: 900;
+}
+.shoppingBasket div.prise {
+    margin-top: 57px;
+    text-align: center;
+}
+.shoppingBasket div.prise > span:nth-child(1) {
+    background: #00a86b;
+    border-radius: 20px;
+    padding: 0px 6px;
+    box-shadow: 0px 0px 13px #000;
+    color: #fff;
 }
 .basketBox {
         position: fixed;
@@ -1763,10 +1776,11 @@ div.documentPasport p {
     height: 60px;
     padding: 5px;
     border-bottom: 1px dashed rgb(232,232,232);
+    position: relative;
 }
 .basketFooter {
     height: 33px;
-    padding-left: 311px;
+    /*padding-left: 311px;*/
     padding-top: 6px;
     padding-bottom: 6px;
 }
@@ -1775,11 +1789,15 @@ div.documentPasport p {
     margin: 5px;
         border-radius: 3px;
 }
-.basketFooter button:nth-child(1) {
-        background: rgb(250,250,250);
+.basketFooter span {
+    margin-right: 198px;
     color: rgb(69,90,100);
 }
 .basketFooter button:nth-child(2) {
+        background: rgb(250,250,250);
+    color: rgb(69,90,100);
+}
+.basketFooter button:nth-child(3) {
         background: rgb(118,187,32);
     color: #fff;
 }
@@ -1799,7 +1817,11 @@ div.documentPasport p {
     margin-left: 10px;
     width: 50px;
     margin-top: 16px;
+    position: absolute;
+    right: 124px;
+    top: 0px;
 }
+
 .basketParams span {
         float: right;
     margin-top: 21px;

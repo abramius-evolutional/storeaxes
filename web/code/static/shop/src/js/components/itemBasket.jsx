@@ -18,7 +18,7 @@ var ItemBasket = React.createClass({
 				<h6>{this.props.prop.item.title}</h6>
 				<input type="number" min="1" max="99" name="points" step="1" onChange={this.onChangeCount} defaultValue={this.props.prop.count}/>
 				<button onClick={this.onDelete}><i className="fa fa-times" ariaHidden="true"></i></button>
-				<span>{'цена: ' + this.props.prop.item.prise}</span>
+				<span>{'цена: ' + (this.props.prop.item.prise)}</span>
 			</div>
 		);
 	}
