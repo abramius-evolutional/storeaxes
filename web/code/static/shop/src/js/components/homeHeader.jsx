@@ -193,7 +193,7 @@ taygasibru@yandex.ru</h2>
                                     <span>{countBasketItems}</span>
                                 </div>
                                 <div className="prise">
-                                    <span>{this.state.totalPrise + ' руб'}</span>
+                                    <span>{this.state.totalPrise + ' '}<i className='fa fa-rub' ></i></span>
                                 </div>
                             </div>
                         </div>

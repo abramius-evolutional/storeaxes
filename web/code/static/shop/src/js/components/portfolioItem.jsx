@@ -31,7 +31,7 @@ var PortfolioItem = React.createClass({
                     </Link>
                     <span>{this.props.prop.title}</span>
                     <p>{description}</p>
-                    <span>{this.props.prop.prise + ''}<i className='fa fa-rub' ></i></span>
+                    <span>{this.props.prop.prise + ' '}<i className='fa fa-rub' ></i></span>
                 </div>
             </li>
 		);

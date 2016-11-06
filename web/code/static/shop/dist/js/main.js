@@ -32822,7 +32822,7 @@ var HomeHeader = React.createClass({displayName: "HomeHeader",
                                     React.createElement("span", null, countBasketItems)
                                 ), 
                                 React.createElement("div", {className: "prise"}, 
-                                    React.createElement("span", null, this.state.totalPrise + ' руб')
+                                    React.createElement("span", null, this.state.totalPrise + ' ', React.createElement("i", {className: "fa fa-rub"}))
                                 )
                             )
                         )
@@ -33077,7 +33077,7 @@ var PortfolioItem = React.createClass({displayName: "PortfolioItem",
                     ), 
                     React.createElement("span", null, this.props.prop.title), 
                     React.createElement("p", null, description), 
-                    React.createElement("span", null, this.props.prop.prise + '', React.createElement("i", {className: "fa fa-rub"}))
+                    React.createElement("span", null, this.props.prop.prise + ' ', React.createElement("i", {className: "fa fa-rub"}))
                 )
             )
 		);
