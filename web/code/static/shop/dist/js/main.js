@@ -33035,7 +33035,8 @@ var Portfolio = React.createClass({displayName: "Portfolio",
 	            React.createElement("div", {className: "row"}, 
 	                React.createElement("ul", {className: "portfolioImg"}, 
 	                  portfolioItemsNode, 
-	                  this.props.children
+	                  this.props.children, 
+	                  React.createElement("div", {style: {clear: 'both'}})
 	                )
 	            )
 	        )
@@ -33044,6 +33045,7 @@ var Portfolio = React.createClass({displayName: "Portfolio",
 });
 
 module.exports = Portfolio;
+
 
 },{"../action/actions.js":308,"../stores/store.js":340,"./portfolioItem.jsx":324,"./tableProductItem.jsx":334,"react":305}],324:[function(require,module,exports){
 var React = require('react');

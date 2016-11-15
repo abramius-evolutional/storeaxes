@@ -43,6 +43,7 @@ var Portfolio = React.createClass({
 	                <ul className="portfolioImg">
 	                  {portfolioItemsNode}  
 	                  {this.props.children}
+	                  <div style={{clear: 'both'}}></div>
 	                </ul>
 	            </div>
 	        </div>
