@@ -31921,25 +31921,26 @@ var AboutText = React.createClass({displayName: "AboutText",
 		this.setState({address: AppStore.getState().address});
 	},
 	render: function () {
-		if (this.state.address == null) {
+		// console.log('abouttext', this.state.address.about);
+		if (this.state.address !== null) {
 			return (
 				React.createElement("div", {className: "about-us container"}, 
 		            React.createElement("div", {className: "row"}, 
 		                React.createElement("div", {className: "about-us-text span12"}, 
-		                    React.createElement("p", null, "Мастерская \"ТАЙГА\" производит профессиональный кованный инструмент в древних традициях по современным технологиям, высокого качества исполнения для ручной работы и долгих лет службы! Мы изготавливаем трехслойные кузнечные топоры, колуны, топоры из дамасской стали, тесла, дамасские ножи, скобеля... Наша мастерская начала свое производство с 2012 года имея большой опыт работы. Во главе своего производства мы ставим Качество и современный дизайн изделий, всегда предоставляем высокие гарантии и гибкий подход клиентам. Наш интернет магазин работает как в розницу,так и с оптовыми покупателями предоставляя выгодные условия. По мере развития и увеличения производства стараемся снижать цены,только не за счет качества инструмента. Так же в полной мере работаем с индивидуальными заказами и учитываем все пожелания покупателей."), 
-		                    React.createElement("p", null, "ИП-Верескунов Иван Александрович")
+		                    React.createElement("p", null, this.state.address.about)
+		                    /*<p>ИП-Верескунов Иван Александрович</p>*/
 		                )
 		            )
 		        )
 			);
 		}
-		else if (this.state.address !== null) {
+		else if (this.state.address === null) {
 			return (
 				React.createElement("div", {className: "about-us container"}, 
 		            React.createElement("div", {className: "row"}, 
 		                React.createElement("div", {className: "about-us-text span12"}, 
-		                   React.createElement("p", null, "Мастерская \"ТАЙГА\" производит профессиональный кованный инструмент в древних традициях по современным технологиям, высокого качества исполнения для ручной работы и долгих лет службы! Мы изготавливаем трехслойные кузнечные топоры, колуны, топоры из дамасской стали, тесла, дамасские ножи, скобеля... Наша мастерская начала свое производство с 2012 года имея большой опыт работы. Во главе своего производства мы ставим Качество и современный дизайн изделий, всегда предоставляем высокие гарантии и гибкий подход клиентам. Наш интернет магазин работает как в розницу,так и с оптовыми покупателями предоставляя выгодные условия. По мере развития и увеличения производства стараемся снижать цены,только не за счет качества инструмента. Так же в полной мере работаем с индивидуальными заказами и учитываем все пожелания покупателей."), 
-		                    React.createElement("p", null, "ИП-Верескунов Иван Александрович")
+		                   React.createElement("p", null), 
+		                    React.createElement("p", null)
 		                )
 		            )
 		        )
@@ -31949,6 +31950,7 @@ var AboutText = React.createClass({displayName: "AboutText",
 });
 
 module.exports = AboutText;
+
 
 },{"../action/actions.js":308,"../stores/store.js":340,"react":305}],311:[function(require,module,exports){
 var React = require('react');
@@ -33357,6 +33359,7 @@ var Service = React.createClass({displayName: "Service",
         AppStore.removeChangeListener(this._onChange);
     },
 	_onChange: function () {
+		// console.log('service', )
 		this.setState({
 			service: AppStore.getState().service,
 			address: AppStore.getState().address
@@ -33364,7 +33367,7 @@ var Service = React.createClass({displayName: "Service",
 	},
 	render: function () {
 		var serviceNode, aboutContent = null;
-		if (this.state.service != null) {
+		if (this.state.service !== null) {
 			serviceNode = this.state.service.map(function(prop) {
 				return (
 					React.createElement(ServiceItem, {prop: prop, key: prop.id})
@@ -33373,11 +33376,11 @@ var Service = React.createClass({displayName: "Service",
 		}
 		if (this.state.address !== null) {
 			aboutContent = React.createElement("div", {className: "about-us-text span12"}, 
-	                    React.createElement("p", null, "ОПЛАТА. Мы работаем только при полной предоплате заказа. В связи с нашей удаленностью от города оплата осуществляется только безналичным способом на банковскую карту Сбербанка России. Выбранный товар сначала добавляется в корзину,после чего заполняется форма. В ответ на указанную вами электронную почту мы отправляем номер карты и сумму заказа с учетом доставки. После оплаты сообщаем срок изготовления (если нет в наличии) и дату отправки вашего заказа. Оптовый заказ начинается от 10 изделий,цены и условия оплаты сообщаем по запросу."), 
-	                    React.createElement("p", null, "ДОСТАВКА. БЕСПЛАТНАЯ доставка во все регионы России осуществляется через отделения \"Почта России\". Посылки не теряются и доходят целыми! Время доставки около 7- 14 дней,зависит от удаленности региона. Доставка службой ЕМС-400р. Это более быстрый способ,до 5 дней. Доставка за рубеж оговаривается отдельно. Доставка транспортными компаниями так же сильно ограничена нашей удаленностью и подходит в основном оптовым покупателям, все условия оговариваются по факту. Время отправки всегда уточняется индивидуально,это зависит от очереди заказов.")
+	                    React.createElement("p", null, this.state.address.payment), 
+	                    React.createElement("p", null, this.state.address.delivery)
 	                )
 		}
-		else if (this.state.service != null) {
+		else if (this.state.service === null) {
 			serviceNode = null;
 		}
 		return (
@@ -33393,6 +33396,7 @@ var Service = React.createClass({displayName: "Service",
 
 
 module.exports = Service;
+
 
 },{"../action/actions.js":308,"../stores/store.js":340,"./serviceItem.jsx":328,"react":305}],331:[function(require,module,exports){
 var React = require('react');
@@ -33794,7 +33798,8 @@ var state = {
 	statusCreateBasket: false,
 	basketId: null,
 	basketIhfo: [],
-    totalPrise: 0
+    totalPrise: 0,
+    categories: []
 };
 
 function setCookie(name, value, options) {
@@ -33832,7 +33837,8 @@ function loadWorks (action) {
 	state.images = [];
 	state.works = action.data.workItems;
 	state.sliders = action.data.sliderItems;
-	// console.log('store.js', state.works); 
+	state.categories = action.data.categories;
+	console.log('store.js', action.data);
 	function compareNumeric(a, b) {
 		  if (a.id > b.id) return 1;
 		  if (a.id < b.id) return -1;
@@ -33960,7 +33966,7 @@ function getInfoBasket(action) {
 	state.basketIhfo = action.data;
     state.totalPrise = 0;
     for (var i = 0; i < action.data.length; i++) {
-        console.log('Store.js', action.data);
+        // console.log('Store.js', action.data);
         state.totalPrise = state.totalPrise + action.data[i].item.prise;
     }
 };

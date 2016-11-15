@@ -20,7 +20,8 @@ var state = {
 	statusCreateBasket: false,
 	basketId: null,
 	basketIhfo: [],
-    totalPrise: 0
+    totalPrise: 0,
+    categories: []
 };
 
 function setCookie(name, value, options) {
@@ -58,7 +59,8 @@ function loadWorks (action) {
 	state.images = [];
 	state.works = action.data.workItems;
 	state.sliders = action.data.sliderItems;
-	// console.log('store.js', state.works); 
+	state.categories = action.data.categories;
+	console.log('store.js', action.data);
 	function compareNumeric(a, b) {
 		  if (a.id > b.id) return 1;
 		  if (a.id < b.id) return -1;
@@ -186,7 +188,7 @@ function getInfoBasket(action) {
 	state.basketIhfo = action.data;
     state.totalPrise = 0;
     for (var i = 0; i < action.data.length; i++) {
-        console.log('Store.js', action.data);
+        // console.log('Store.js', action.data);
         state.totalPrise = state.totalPrise + action.data[i].item.prise;
     }
 };
