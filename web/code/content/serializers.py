@@ -44,3 +44,32 @@ class SliderItemSerializer(serializers.ModelSerializer):
         )
     def get_url(self, obj):
         return obj.image.url
+
+class VideoSerializer(serializers.ModelSerializer):
+    dt = serializers.SerializerMethodField('get_datetime')
+    class Meta:
+        model = models.Video
+        fields = (
+            'id',
+            'title',
+            'description',
+            'dt',
+            'video_url',
+            'sort_index',
+        )
+    def get_datetime(self, obj):
+        return obj.dt.strftime('%Y-%m-%d %H:%M')
+
+class GallerSeriyalizer(serializers.ModelSerializer):
+    url = serializers.SerializerMethodField('get_url')
+    class Meta:
+        model = models.GalleryImage
+        fields = (
+            'id',
+            'title',
+            'description',
+            'url',
+            'sort_index',
+        )
+    def get_url(self, obj):
+        return obj.image.url

@@ -36,10 +36,18 @@ def get_state(request):
             serviceItemsData.append(json.loads(item.json_data))
         except: pass
 
+    videos = models.Video.objects.all().order_by('sort_index')
+    videosSerializer = serializers.VideoSerializer(videos, many=True)
+
+    images = models.GalleryImage.objects.all().order_by('sort_index')
+    gallerySerializer = serializers.GallerSeriyalizer(images, many=True)
+
     return ApiResponse({
         'workItems': workItemSerializer.data,
         'categories': categories,
         'contactInfo': contactInfoSerializer.data,
         'sliderItems': sliderItemsSerializer.data,
         'serviceItems': serviceItemsData,
+        'videos': videosSerializer.data,
+        'gallery': gallerySerializer.data,
     })

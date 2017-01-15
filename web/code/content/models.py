@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import uuid
+from django.utils import timezone
 from django.db import models
 
 class WorkItemCategory(models.Model):
@@ -71,5 +72,31 @@ class ServiceItem(models.Model):
         verbose_name = 'Сервис'
         verbose_name_plural = 'Сервисы'
 
+class Video(models.Model):
+    title = models.CharField(max_length=200, verbose_name='Название')
+    description = models.TextField(default='', blank=True, verbose_name='Описание')
+    dt = models.DateTimeField(default=timezone.now, verbose_name='Дата добавления')
+    video_url = models.CharField(max_length=200, verbose_name='Ссылка на видео')
+    sort_index = models.IntegerField(verbose_name='Сортировочный индекс', default=0)
+    def __unicode__(self):
+        return self.title
+    class Meta:
+        verbose_name = 'Видео'
+        verbose_name_plural = 'Видео'
 
-
+class GalleryImage(models.Model):
+    title = models.CharField(max_length=200, verbose_name='Название')
+    description = models.TextField(default='', blank=True, verbose_name='Описание')
+    image = models.ImageField(upload_to='images_gallery/', verbose_name='Изображение')
+    sort_index = models.IntegerField(verbose_name='Сортировочный индекс', default=0)
+    def __unicode__(self):
+        return self.image.url
+    class Meta:
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Галерея'
+    def image_tag(self):
+        return u'<a href="%s"><img src="%s" style="max-height: 150px; max-width: 300px" /></a>' % (
+            self.image.url, self.image.url
+        )
+    image_tag.short_description = 'Предпросмотр'
+    image_tag.allow_tags = True
