@@ -17,29 +17,54 @@ var App = require('./components/app.jsx');
 
 var App1 = React.createClass({
 	render: function () {
+        var elem = document.getElementById('bodyBox');
+        if (elem !== null) {
+            elem.scrollIntoView(true);
+        }
+        // console.log('apppapppapp');
 		return (<App prop="/" />);
 	}
 });
 var AppGallery =  React.createClass({
 	render: function () {
+        var elem = document.getElementById('bodyBox');
+        if (elem !== null) {
+            elem.scrollIntoView(true);
+        }
+        // console.log('apppapppapp');
 		return (<App prop="/gallery" />);
 	}
 });
 
 var AppService = React.createClass({
 	render: function () {
+        var elem = document.getElementById('bodyBox');
+        if (elem !== null) {
+            elem.scrollIntoView(true);
+        }
+        // console.log('apppapppapp');
 		return (<App prop="/service" />);
 	}
 });
 
 var AppAbout = React.createClass({
 	render: function () {
+        var elem = document.getElementById('bodyBox');
+        if (elem !== null) {
+            elem.scrollIntoView(true);
+        }
+        // console.log('apppapppapp');
 		return (<App prop="/about" />);
 	}
 });
 
 var AppContacts = React.createClass({
 	render: function () {
+        var elem = document.getElementById('bodyBox');
+        if (elem !== null) {
+            elem.scrollIntoView(true);
+        }
+        // console.log('apppapppapp');
 		return (<App prop="/contact" />);
 	}
 });
@@ -50,6 +75,11 @@ var AppProductsItem = React.createClass({
 		AppActions.getInfoProductsItem(window.location.pathname.substr(10));
 	},
 	render: function () {
+        var elem = document.getElementById('bodyBox');
+        if (elem !== null) {
+            elem.scrollIntoView(true);
+        }
+        // console.log('apppapppapp');
 		return (<App prop="/products" />);
 	}
 });

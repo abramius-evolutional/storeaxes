@@ -77,7 +77,8 @@ function loadWorks (action) {
 			description: action.data.workItems[j].description,
 			id: action.data.workItems[j].id,
 			title: action.data.workItems[j].title,
-			prise: prise
+			prise: prise,
+			category: action.data.workItems[j].category
 		};
 		state.worksCard.push(objWorksCard);
 	}

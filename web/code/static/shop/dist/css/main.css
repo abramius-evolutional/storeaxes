@@ -1955,6 +1955,20 @@ p {
     width: 100%;
     display: block;
 }
+.categoryBox {
+    height: 70px;
+    background: rgba(227,227,227,.7);
+    padding-top: 4px;
+    /*margin-bottom: 20px;*/
+    text-align: left;
+    padding-left: 20px;
+}
+.categoryBox > h2 {
+
+}
+.boxCategoryItem {
+    margin-top: 40px;
+}
 
 /*!
  *  Font Awesome 4.6.3 by @davegandy - http://fontawesome.io - @fontawesome

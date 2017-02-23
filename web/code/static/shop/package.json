@@ -41,15 +41,22 @@
     "yo": "~1.5.0"
   },
   "dependencies": {
+    "babelify": "^7.3.0",
     "es6-promise": "^3.0.2",
     "flux": "^2.1.1",
     "generator-flux": "^0.4.5",
     "gulp": "^3.9.0",
+    "gulp-babel-minify": "^0.1.12",
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-jsmin": "^0.1.5",
     "gulp-livereload": "^3.8.1",
+    "gulp-minify": "0.0.15",
+    "gulp-minify-inline": "^0.2.1",
     "gulp-react": "^3.1.0",
     "gulp-reactify": "^3.0.1",
+    "gulp-rev-mtime": "0.0.4",
     "material-design-react": "^0.2.1",
     "normalize.css": "^3.0.3",
     "object-assign": "^4.0.1",
@@ -62,6 +69,8 @@
     "react-router": "^2.6.1",
     "react-toolbox": "^0.14.0",
     "reactify": "^1.1.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
     "yo": "^1.5.0"
   },
   "description": ""

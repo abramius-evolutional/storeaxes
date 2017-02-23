@@ -32044,6 +32044,9 @@ var App = React.createClass({displayName: "App",
 	    router: React.PropTypes.func
 	},
 	render: function  () {
+
+
+
 		if (this.props.prop == '/') {
 			return this.renderHome();
 		}
@@ -32084,7 +32087,7 @@ var App = React.createClass({displayName: "App",
 			var basketComponent = React.createElement(Basket, null);
 		}
 		return (
-			React.createElement("div", null, 
+			React.createElement("div", {id: "bodyBox"}, 
 				React.createElement(DocMeta, {tags: tags}), 
 				modalShow, 
 				basketComponent, 
@@ -32120,7 +32123,7 @@ var App = React.createClass({displayName: "App",
 			var basketComponent = React.createElement(Basket, null);
 		}
 		return (
-			React.createElement("div", null, 
+			React.createElement("div", {id: "bodyBox"}, 
 				React.createElement(DocMeta, {tags: tags}), 
 				basketComponent, 
 				React.createElement(HomeHeader, {prop: this.props.prop}), 
@@ -32142,7 +32145,7 @@ var App = React.createClass({displayName: "App",
 			var basketComponent = React.createElement(Basket, null);
 		}
 		return(
-			React.createElement("div", null, 
+			React.createElement("div", {id: "bodyBox"}, 
 				React.createElement(DocMeta, {tags: tags}), 
 				basketComponent, 
 				React.createElement(HomeHeader, {prop: this.props.prop}), 
@@ -32164,7 +32167,7 @@ var App = React.createClass({displayName: "App",
 			var basketComponent = React.createElement(Basket, null);
 		}
 		return (
-			React.createElement("div", null, 
+			React.createElement("div", {id: "bodyBox"}, 
 				React.createElement(DocMeta, {tags: tags}), 
 				basketComponent, 
 				React.createElement(HomeHeader, {prop: this.props.prop}), 
@@ -32187,7 +32190,7 @@ var App = React.createClass({displayName: "App",
 			var basketComponent = React.createElement(Basket, null);
 		}
 		return (
-			React.createElement("div", null, 
+			React.createElement("div", {id: "bodyBox"}, 
 				React.createElement(DocMeta, {tags: tags}), 
 				basketComponent, 
 				React.createElement(HomeHeader, {prop: this.props.prop}), 
@@ -32205,7 +32208,7 @@ var App = React.createClass({displayName: "App",
 			var basketComponent = React.createElement(Basket, null);
 		}
 		return (
-			React.createElement("div", null, 
+			React.createElement("div", {id: "bodyBox"}, 
 				basketComponent, 
 				React.createElement(HomeHeader, {prop: this.props.prop}), 
 				React.createElement(ProductsItem, null), 
@@ -33002,7 +33005,8 @@ var Portfolio = React.createClass({displayName: "Portfolio",
 	getInitialState: function () {
 		return {
 			portfolioItems: AppStore.getState().works,
-			basketId: AppStore.getState().basketId
+			basketId: AppStore.getState().basketId,
+            categories: AppStore.getState().categories
 		};
 	},
 	componentDidMount: function () {
@@ -33014,7 +33018,8 @@ var Portfolio = React.createClass({displayName: "Portfolio",
 	_onChange: function () {
 		this.setState({
 			portfolioItems: AppStore.getState().worksCard,
-			basketId: AppStore.getState().basketId
+			basketId: AppStore.getState().basketId,
+            categories: AppStore.getState().categories
 		});
 	},
 	render: function () {
@@ -33022,14 +33027,52 @@ var Portfolio = React.createClass({displayName: "Portfolio",
 		if (this.state.portfolioItems == null) {
 			var portfolioItemsNode = null;
 		}
-		else if (this.state.portfolioItems != null) {
-			var basketId = this.state.basketId;
-			var portfolioItemsNode = this.state.portfolioItems.map(function(prop) {
-				return (
-					React.createElement(TableProductItem, {basketId: basketId, params: { id: prop.id}, prop: prop, key: prop.id})
-				);
-			})
-		}
+		// else if (this.state.portfolioItems != null) {
+		// 	var basketId = this.state.basketId;
+		// 	var portfolioItemsNode = this.state.portfolioItems.map(function(prop) {
+		// 		return (
+		// 			<TableProductItem basketId={basketId} params={{ id: prop.id }} prop={prop} key={prop.id} />
+		// 		);
+		// 	})
+		// }
+        else if (this.state.portfolioItems != null) {
+            var basketId = this.state.basketId;
+            var portfolioItemsNode = this.state.categories.map((prop2, id) => {
+                var statusChild = 'not';
+                var works = this.state.portfolioItems.map(function(prop) {
+                    if (prop.category === prop2) {
+                        statusChild = 'yes';
+                        return (
+                            React.createElement(TableProductItem, {basketId: basketId, params: { id: prop.id}, prop: prop, key: prop.id})
+                        );
+                    }
+                    else {
+                        return (
+                            null
+                        );
+                    }
+
+                })
+                console.log("itemWork.jsx", works);
+                if (statusChild === 'not') {
+                    return(null)
+                }
+                return (
+                    React.createElement("div", {className: "boxCategoryItem", key: id}, 
+                        React.createElement("div", {className: "categoryBox"}, 
+                            React.createElement("h2", null, prop2)
+                        ), 
+                        works, 
+                        React.createElement("div", {style: {clear: 'both', float: 'none', width: '100%', height: '0px', padding: '0px', margin: '0px', display: 'block'}})
+                    )
+                )
+            })
+            var works = this.state.portfolioItems.map(function(prop) {
+                return (
+                    React.createElement(PortfolioItem, {params: { id: prop.id}, prop: prop, key: prop.id})
+                );
+            })
+        }
 		return (
 			React.createElement("div", {className: "portfolio portfolio-page container"}, 
 	            React.createElement("div", {className: "row"}, 
@@ -33617,7 +33660,8 @@ var PortfolioItem = require('./portfolioItem.jsx');
 var Work = React.createClass({displayName: "Work",
 	getInitialState: function () {
 		return {
-			portfolioItems: AppStore.getState().works
+			portfolioItems: AppStore.getState().works,
+            categories: AppStore.getState().categories
 		};
 	},
 	componentDidMount: function () {
@@ -33627,11 +33671,45 @@ var Work = React.createClass({displayName: "Work",
         AppStore.removeChangeListener(this._onChange);
     },
 	_onChange: function () {
-		this.setState({portfolioItems: AppStore.getState().worksCard});
+		this.setState({
+		    portfolioItems: AppStore.getState().worksCard,
+            categories: AppStore.getState().categories
+		});
 	},
 	render: function () {
-		// console.log("itemWork.jsx", this.state.works);
+		// console.log("itemWork.jsx", this.state.portfolioItems);
+
 		if (this.state.portfolioItems != null) {
+		    var category = this.state.categories.map((prop2, id) => {
+		        var statusChild = 'not';
+                var works = this.state.portfolioItems.map(function(prop) {
+                    if (prop.category === prop2) {
+                        statusChild = 'yes';
+                        return (
+                            React.createElement(PortfolioItem, {params: { id: prop.id}, prop: prop, key: prop.id})
+                        );
+                    }
+                    else {
+                        return (
+                            null
+                        );
+                    }
+
+                })
+                console.log("itemWork.jsx", works);
+                if (statusChild === 'not') {
+                    return(null)
+                }
+		        return (
+		            React.createElement("div", {className: "boxCategoryItem", key: id}, 
+                        React.createElement("div", {className: "categoryBox"}, 
+                            React.createElement("h2", null, prop2)
+                        ), 
+                        works, 
+                        React.createElement("div", {style: {clear: 'both', float: 'none', width: '100%', height: '0px', padding: '0px', margin: '0px', display: 'block'}})
+                    )
+                )
+            })
 			var works = this.state.portfolioItems.map(function(prop) {
 				return (
 					React.createElement(PortfolioItem, {params: { id: prop.id}, prop: prop, key: prop.id})
@@ -33648,7 +33726,8 @@ var Work = React.createClass({displayName: "Work",
 	            ), 
 	            React.createElement("div", {className: "row"}, 
 	            	React.createElement("ul", {className: "portfolio-img"}, 
-	                  works
+                        category
+	                  /*{works}*/
 	                )
 	            )
 	        )
@@ -33657,6 +33736,7 @@ var Work = React.createClass({displayName: "Work",
 });
 
 module.exports = Work;
+
 
 },{"../action/actions.js":308,"../stores/store.js":340,"./itemWork.jsx":320,"./portfolioItem.jsx":324,"react":305}],337:[function(require,module,exports){
 module.exports = {
@@ -33713,29 +33793,54 @@ var App = require('./components/app.jsx');
 
 var App1 = React.createClass({displayName: "App1",
 	render: function () {
+        var elem = document.getElementById('bodyBox');
+        if (elem !== null) {
+            elem.scrollIntoView(true);
+        }
+        // console.log('apppapppapp');
 		return (React.createElement(App, {prop: "/"}));
 	}
 });
 var AppGallery =  React.createClass({displayName: "AppGallery",
 	render: function () {
+        var elem = document.getElementById('bodyBox');
+        if (elem !== null) {
+            elem.scrollIntoView(true);
+        }
+        // console.log('apppapppapp');
 		return (React.createElement(App, {prop: "/gallery"}));
 	}
 });
 
 var AppService = React.createClass({displayName: "AppService",
 	render: function () {
+        var elem = document.getElementById('bodyBox');
+        if (elem !== null) {
+            elem.scrollIntoView(true);
+        }
+        // console.log('apppapppapp');
 		return (React.createElement(App, {prop: "/service"}));
 	}
 });
 
 var AppAbout = React.createClass({displayName: "AppAbout",
 	render: function () {
+        var elem = document.getElementById('bodyBox');
+        if (elem !== null) {
+            elem.scrollIntoView(true);
+        }
+        // console.log('apppapppapp');
 		return (React.createElement(App, {prop: "/about"}));
 	}
 });
 
 var AppContacts = React.createClass({displayName: "AppContacts",
 	render: function () {
+        var elem = document.getElementById('bodyBox');
+        if (elem !== null) {
+            elem.scrollIntoView(true);
+        }
+        // console.log('apppapppapp');
 		return (React.createElement(App, {prop: "/contact"}));
 	}
 });
@@ -33746,6 +33851,11 @@ var AppProductsItem = React.createClass({displayName: "AppProductsItem",
 		AppActions.getInfoProductsItem(window.location.pathname.substr(10));
 	},
 	render: function () {
+        var elem = document.getElementById('bodyBox');
+        if (elem !== null) {
+            elem.scrollIntoView(true);
+        }
+        // console.log('apppapppapp');
 		return (React.createElement(App, {prop: "/products"}));
 	}
 });
@@ -33776,6 +33886,7 @@ ReactDOM.render((
 // 	<App />,
 // 	document.getElementById('content')
 // );
+
 
 },{"./action/actions.js":308,"./components/app.jsx":312,"./stores/store.js":340,"history":21,"react":305,"react-router":114}],340:[function(require,module,exports){
 var AppDispatcher = require('../dispatcher/dispatcher.js');
@@ -33857,7 +33968,8 @@ function loadWorks (action) {
 			description: action.data.workItems[j].description,
 			id: action.data.workItems[j].id,
 			title: action.data.workItems[j].title,
-			prise: prise
+			prise: prise,
+			category: action.data.workItems[j].category
 		};
 		state.worksCard.push(objWorksCard);
 	}

@@ -64,6 +64,9 @@ var App = React.createClass({
 	    router: React.PropTypes.func
 	},
 	render: function  () {
+
+
+
 		if (this.props.prop == '/') {
 			return this.renderHome();
 		}
@@ -104,7 +107,7 @@ var App = React.createClass({
 			var basketComponent = <Basket />;
 		}
 		return (
-			<div>
+			<div id="bodyBox">
 				<DocMeta tags={tags} />
 				{modalShow}
 				{basketComponent}
@@ -140,7 +143,7 @@ var App = React.createClass({
 			var basketComponent = <Basket />;
 		}
 		return (
-			<div>
+			<div id="bodyBox">
 				<DocMeta tags={tags} />
 				{basketComponent}
 				<HomeHeader prop={this.props.prop}></HomeHeader>
@@ -162,7 +165,7 @@ var App = React.createClass({
 			var basketComponent = <Basket />;
 		}
 		return(
-			<div>
+			<div id="bodyBox">
 				<DocMeta tags={tags} />
 				{basketComponent}
 				<HomeHeader prop={this.props.prop}></HomeHeader>
@@ -184,7 +187,7 @@ var App = React.createClass({
 			var basketComponent = <Basket />;
 		}
 		return (
-			<div>
+			<div id="bodyBox">
 				<DocMeta tags={tags} />
 				{basketComponent}
 				<HomeHeader prop={this.props.prop}></HomeHeader>
@@ -207,7 +210,7 @@ var App = React.createClass({
 			var basketComponent = <Basket />;
 		}
 		return (
-			<div>
+			<div id="bodyBox">
 				<DocMeta tags={tags} />
 				{basketComponent}
 				<HomeHeader prop={this.props.prop}></HomeHeader>
@@ -225,7 +228,7 @@ var App = React.createClass({
 			var basketComponent = <Basket />;
 		}
 		return (
-			<div>
+			<div id="bodyBox">
 				{basketComponent}
 				<HomeHeader prop={this.props.prop}></HomeHeader>
 				<ProductsItem />
